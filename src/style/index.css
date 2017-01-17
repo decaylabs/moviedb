@@ -19,11 +19,21 @@ body {
   border: 1px solid #ddd;
 }
 
-
+.list-group {
+  text-align: center;
+}
 .list-group-item {
   cursor: pointer;
 }
 
 .list-group-item:hover {
   background-color: #ADD8E6;
+}
+
+.collections {
+  padding-left: 20px;
+}
+
+.collections-list {
+  max-width: 50px;
 }

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addFavorite } from '../actions/index';
 
 
 class MovieDetail extends Component {
+
+  onFavoritesClick() {
+    this.props.addFavorite(this.props.movie);
+  }
 
   render () {
     const movie = this.props.movie;
@@ -12,7 +18,7 @@ class MovieDetail extends Component {
     }
 
     return (
-      <div className="movie-detail media col-md-8">
+      <div className="movie-detail media col-md-7">
         <div className="media-left">
           <img className="media-object" alt="searched video" src={movie.Poster} />
         </div>
@@ -31,6 +37,13 @@ class MovieDetail extends Component {
           <h6>Awards: {movie.Awards}</h6>
           <h6>Metascore: {movie.Metascore}</h6>
           <h6>imdb Rating: {movie.imdbRating}</h6>
+
+
+          <button
+           onClick={this.onFavoritesClick.bind(this)}
+           className="btn btn-primary">
+           Add to Favorites
+          </button>
         </div>
       </div>
     );
@@ -38,7 +51,14 @@ class MovieDetail extends Component {
 }
 
 function mapStateToProps(state) {
-  return { movie: state.movies.movie };
+  return {
+    movie: state.movies.movie,
+    favorites: state.favorites.all
+   };
 }
 
-export default connect(mapStateToProps)(MovieDetail);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addFavorite }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
