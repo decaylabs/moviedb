@@ -1,4 +1,4 @@
-import { SEARCH_MOVIES, GET_MOVIE} from '../constants/ActionTypes';
+import { SEARCH_MOVIES, GET_MOVIE, GET_FAVORITE } from '../constants/ActionTypes';
 const INITIAL_STATE = { search: [], movie: null};
 
 export default function(state = INITIAL_STATE, action) {
@@ -7,6 +7,8 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, search: action.payload.data.Search };
     case GET_MOVIE:
       return { ...state, movie: action.payload.data };
+    case GET_FAVORITE:
+      return { ...state, movie: action.payload };
     default:
       return state;
   }

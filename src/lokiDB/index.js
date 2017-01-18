@@ -1,10 +1,24 @@
-import Loki from 'lokijs';
+import loki from 'lokijs';
+var favorites = [];
 
-var db = new Loki('sandbox');
+var idbAdapter = new loki.LokiLocalStorageAdapter();
+var db = new loki('movieDB',
+    {
+      autoload: true,
+      autoloadCallback : loadHandler,
+      autosave: true,
+      autosaveInterval: 10000, // 10 seconds
+      adapter: idbAdapter
+    });
 
-var favorites = db.addCollection('favorites');
+function loadHandler() {
+    // if database did not exist it will be empty so I will intitialize here
+  favorites = db.getCollection('favorites');
+  if (favorites === null) {
+    favorites = db.addCollection('favorites');
+  }
+}
 
-favorites.insert({Title: 'Harry Potter', imdbID: 'sdasdas'});
-favorites.insert({Title: 'Mad Men', imdbID: 'sdadsdfdas'});
+// db.deleteDatabase();
 
-export default favorites;
+export default db;

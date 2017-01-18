@@ -19,9 +19,7 @@ body {
   border: 1px solid #ddd;
 }
 
-.list-group {
-  text-align: center;
-}
+
 .list-group-item {
   cursor: pointer;
 }

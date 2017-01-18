@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getFavorites } from '../actions/index';
+import { getFavorites, getFavorite } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class CollectionList extends Component {
@@ -14,6 +14,7 @@ class CollectionList extends Component {
       return (
         <li
           key={movie.imdbID}
+          onClick={() => this.props.getFavorite(movie)}
           className="list-group-item">
           {movie.Title}
         </li>
@@ -36,7 +37,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getFavorites }, dispatch);
+  return bindActionCreators({ getFavorites, getFavorite }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionList);
