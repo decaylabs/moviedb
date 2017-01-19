@@ -1,6 +1,6 @@
 import axios from 'axios';
 import loki from '../lokiDB/index';
-import { SEARCH_MOVIES, GET_MOVIE, ADD_FAVORITE, GET_FAVORITES, GET_FAVORITE, REMOVE_FAVORITE, CHECK_FAVORITE} from '../constants/ActionTypes';
+import { SEARCH_MOVIES, GET_MOVIE, GET_FAVORITES, GET_FAVORITE, CHECK_FAVORITE, ADD_FAVORITE, REMOVE_FAVORITE} from '../constants/ActionTypes';
 
 const ROOT_URL = 'http://www.omdbapi.com/';
 const SEARCH_TOKEN = '?s=';
@@ -58,7 +58,7 @@ export function getFavorite(movie) {
 
 export function removeFavorite(movie) {
 
-  const request = loki.getCollection('favorites').remove(movie);
+  const request = loki.getCollection('favorites').findAndRemove(movie);
   return {
     type: REMOVE_FAVORITE,
     payload: request
@@ -68,7 +68,10 @@ export function removeFavorite(movie) {
 export function checkFavorite(movie) {
 
   const request = loki.getCollection('favorites').findOne(movie)
-
+  // const request = new Promise( function(resolve){
+  //   setTimeout(() => resolve(loki.getCollection('favorites').findOne(movie)), 500);
+  // });
+  console.log(request);
   return {
     type: CHECK_FAVORITE,
     payload: request
