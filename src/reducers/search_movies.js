@@ -8,7 +8,7 @@ export default function(state = INITIAL_STATE, action) {
     case GET_MOVIE:
       return { ...state, movie: action.payload.data };
     case GET_FAVORITE:
-      return { ...state, movie: action.payload };
+      return { ...state, movie: action.payload};
     default:
       return state;
   }
