@@ -6,6 +6,12 @@ import { addFavorite, removeFavorite, checkFavorite } from '../actions/index';
 
 class MovieDetail extends Component {
 
+  componentWillUpdate() {
+    // console.log('loaded');
+    // console.log(this.props.movie);
+    this.props.checkFavorite(this.props.movie);
+  }
+
 
   onFavoritesClick() {
     this.props.addFavorite(this.props.movie);
@@ -20,15 +26,23 @@ class MovieDetail extends Component {
   }
 
   render () {
-    const favorite = this.props.favorite
+    const favorite = this.props.favorite;
     const movie = this.props.movie;
     let button = null;
 
-    if(!movie) {
+    // console.log(favorites.indexOf(movie));
+    // console.log(movie);
+    console.log(favorite);
+
+    // if(!movie) {
+    //
+    // }
+
+    if(!movie ) {
       return <div className="col-md-8"style={{display: 'hidden'}}></div>
     }
 
-    if (favorite !== movie) {
+    else if (!favorite) {
       button = <AddFavorite onClick={this.onFavoritesClick.bind(this)} />;
     }
     else {
@@ -88,11 +102,14 @@ function DeleteFavorite(props) {
   );
 }
 function mapStateToProps(state) {
-  console.log(state.movies.movie);
-  console.log(state.favorites.favorite);
+  // //console.log(state.movies.movie);
+  // console.log(state.favorites.favorite);
+  // // console.log(state.movies.movie);
+  // // console.log(state.favorites.favorite);
   return {
     movie: state.movies.movie,
-    favorite: state.favorites.favorite
+    favorite: state.favorites.favorite,
+    tracker: state.favorites.movie
    };
 }
 

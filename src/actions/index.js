@@ -66,9 +66,9 @@ export function removeFavorite(movie) {
 }
 
 export function checkFavorite(movie) {
+
   const request = loki.getCollection('favorites').findOne(movie)
 
-  console.log(request);
   return {
     type: CHECK_FAVORITE,
     payload: request

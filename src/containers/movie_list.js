@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMovie } from '../actions/index';
+import { getMovie, checkFavorite } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class MovieList extends Component{
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 //Anything returned from this function will end up as props on the MovieList container
 function mapDispatchToProps(dispatch) {
   //Whenver select movie is called, the result should be passed to all of our reducers
-  return bindActionCreators({getMovie}, dispatch);
+  return bindActionCreators({getMovie, checkFavorite}, dispatch);
 }
 
 // Promote MovieList from a compionent to a container - it needs to know abvoyut this new
