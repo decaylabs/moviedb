@@ -29,7 +29,7 @@ configure the necessary boilerplate.
 
 ###React
 
-The app is made up mostly of containers that communicate with the redux state store. Some of the containers could be broken down and made into functional components with the props being passed from a parent container. This is something that could be implemented when doing a refactor and cleaning up this initial implementation and it's design a bit.
+The app is made up mostly of containers that communicate with the redux state store. Some of the containers could be broken down and made into functional components with the props being passed from a parent container. This is something that could be implemented when doing a refactor and cleaning up this initial implementation and design a bit.
 
 * components/
   1. **header.js** - A simple functional component that displays the title at the top.
@@ -39,9 +39,9 @@ The app is made up mostly of containers that communicate with the redux state st
 
   2. **search_bar.js** - Renders a form that supplies the search term to an api call. The result from the api call update the redux-state movies.search property containing an array of ~10 objects.
 
-  3. **movie_list.js** - Renders the list of search results. On update, the component refreshes the movies.movie state setting the first item so that the movie_viewer displays the top result. Incorporates a responsive Scrollbars area for a clean organization of results.
+  3. **movie_list.js** - Renders the list of search results. On update, the component refreshes the movies.movie state, setting the first item so that the movie_viewer displays the top result. Incorporates a responsive Scrollbars area for a clean organization of results.
 
-  4. **favorites_list.js** - Before mounting, all the saved favorites are loaded from the lokijs database. The resulting array is then mapped ove and rendered to favorites list. On click, it will update the  property in the redux-state favorites.favorite.
+  4. **favorites_list.js** - Before mounting, all the saved favorites are loaded from the lokijs database. The resulting array is then mapped over and rendered to favorites list. On click, it will update the  property in the redux-state favorites.favorite.
 
   5. **movie_viewer.js** - Parent container for displaying the detailed information about a particular movie.
   On mount, checks the lokijs database for the first document. If nothing is in the DB, renders a simple div.
@@ -78,8 +78,8 @@ Redux is used to track app level state.
 * reducers/
   1. **index.js** - Simple combineReducer
   2. **favorites.js** - Add, remove, check and get-all actions coming from the db.
-  3. **movies.js** - Search and get moveies from the api, GET_FAVORITE passes this result through to the corresponding object.
-
+  3. **movies.js** - Search and get movies from the api.
+  
 ###Lokijs
 
 Lokijs is a in-memory JavaScript Datastore with persistence. It is highly performant and uses mongo style querying for a familar endpoint. It is used in this application for persisting favorites across sessions. It was a unique challenge and something worth experimenting with in future applications.
