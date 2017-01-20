@@ -71,7 +71,7 @@ Redux is used to track app level state.
 
         7. **addFavorite** - Adds the corresponding movie to the favorites collection.
 
-         8. **removeFavorite** - Finds and removes the corresponding movie from the favorites collection.
+        8. **removeFavorite** - Finds and removes the corresponding movie from the favorites collection.
 
         9. **checkFavorite** - Used by movie-details for conditional render of the add / remove button in the container.   
 
