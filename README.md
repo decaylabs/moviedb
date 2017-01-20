@@ -85,6 +85,7 @@ Redux is used to track app level state.
 Lokijs is a in-memory JavaScript Datastore with persistence. It is highly performant and uses mongo style querying for a familar endpoint. I incorporated into my application mostly for persisting favorites across sessions. It was a unique challenge and something that I want to experiment with in future applications.
 
 * lokiDB/
+
     1. **index.js** - Creates a simple database and autoloads the corresponding 'favorites' collection if it exists. Currently it saves documents in the collection every 5 seconds using the provided local storage adapter. I'd like to incorporate saving on window close rather than at a set interval as well as utilizing an indexedDB adapter for addtional space since localstorage is limited to ~5mb.
 
 
