@@ -1,4 +1,4 @@
-# Person Movie Database
+# Personal Movie Database
 
 ### Getting Started
 
