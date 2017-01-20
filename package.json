@@ -1,5 +1,5 @@
 {
-  "name": "redux-starter",
+  "name": "moviedb",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -7,18 +7,13 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "fs": "0.0.1-security",
     "lokijs": "^1.4.2",
-    "pouchdb": "^6.1.1",
     "react": "^15.4.2",
     "react-custom-scrollbars": "^4.0.1",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "react-scrollbar": "^0.5.1",
     "redux": "^3.6.0",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0",
-    "youtube-api-search": "0.0.5"
+    "redux-promise": "^0.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
