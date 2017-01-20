@@ -61,19 +61,19 @@ Redux is used to track app level state.
 
         2. **searchMovies** - Uses the search_bar term to call the omdbapi via axios. The request is a promise that resolves to an array containing ~10 simple movie objects.
 
-        3. getMovie - Called by an onClick event from movie_list. First checks to see if the item already exists in the lokijs db or proceeds to do an additional api call to get the detailed json from omdbapi.
+        3. **getMovie** - Called by an onClick event from movie_list. First checks to see if the item already exists in the lokijs db or proceeds to do an additional api call to get the detailed json from omdbapi.
 
-        4. getFavorites - Called on mount of favorites-list. The request is a promise with a small setTimeout before resolving. This is done because the async nature of the application. Loki will resolve immediatly even when the database or collection doesn't exsist.
+        4. **getFavorites** - Called on mount of favorites-list. The request is a promise with a small setTimeout before resolving. This is done because the async nature of the application. Loki will resolve immediatly even when the database or collection doesn't exsist.
 
-        5. getFavorite - Is used by an onClick event from favorites-list. This action is already passed the movie from the favorites-list so it doesn't need to query the database.
+        5. **getFavorite** - Is used by an onClick event from favorites-list. This action is already passed the movie from the favorites-list so it doesn't need to query the database.
 
-        6. getInit - Called on mount of movie_viewer. The request contains the first item in the collection if it exist so that the movie_viewer can display the first item in favorites on app start.
+        6. **getInit** - Called on mount of movie_viewer. The request contains the first item in the collection if it exist so that the movie_viewer can display the first item in favorites on app start.
 
-        7. addFavorite - Adds the corresponding movie to the favorites collection.
+        7. **addFavorite** - Adds the corresponding movie to the favorites collection.
 
-         8. removeFavorite - Finds and removes the corresponding movie from the favorites collection.
+         8. **removeFavorite** - Finds and removes the corresponding movie from the favorites collection.
 
-        9. checkFavorite - Used by movie-details for conditional render of the add / remove button in the container.   
+        9. **checkFavorite** - Used by movie-details for conditional render of the add / remove button in the container.   
 
 * reducers/
   1. **index.js** - Simple combineReducer
