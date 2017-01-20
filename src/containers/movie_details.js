@@ -31,7 +31,7 @@ class MovieDetails extends Component {
     }
 
     return (
-      <div className="movie-detail media col-md-7">
+      <div className="movie-detail media col-md-8">
         <div className="media-left">
           <img className="media-object" alt="searched video" src={movie.Poster} />
         </div>

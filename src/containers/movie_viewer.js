@@ -6,13 +6,13 @@ import { getInit } from '../actions/index';
 
 class MovieViewer extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getInit();
   }
 
   render () {
     if(!this.props.movie) {
-      return <div className="col-md-8"style={{display: 'hidden'}}></div>
+      return <div className="col-md-8"></div>;
     }
     return (
           <MovieDetails />
@@ -22,10 +22,9 @@ class MovieViewer extends Component {
 
 function mapStateToProps(state) {
   return {
-    movie: state.movies.movie,
-    favorite: state.favorites.favorite
-   };
- }
+    movie: state.movies.movie
+  };
+}
 
  function mapDispatchToProps(dispatch) {
    return bindActionCreators({ getInit }, dispatch)

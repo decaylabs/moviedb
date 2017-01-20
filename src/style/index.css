@@ -4,34 +4,53 @@ body {
   font-family: sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 .search-bar {
-  margin: 50px;
+  margin: 20px auto 15px auto;
   width: 50%;
 }
 
 .movie-list img {
-  max-width: 75px;
+  max-width: 60px;
+}
+
+.favorites {
+  float: left;
 }
 
 .movie-detail {
-  margin-top: 0px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 5px solid #ddd;
 }
 
+.list-group-search {
+  padding-left: 15px;
+  padding-right: 0px;
+}
+
+.list-group-favorites {
+  padding-left: 0px;
+  padding-right: 15px;
+}
+
+.col-heading {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+.media-body h5 {
+  font-weight: bold;
+}
 
 .list-group-item {
+  padding: 10px;
   cursor: pointer;
 }
 
 .list-group-item:hover {
   background-color: #ADD8E6;
-}
-
-.collections {
-  padding-left: 20px;
-}
-
-.collections-list {
-  max-width: 50px;
 }

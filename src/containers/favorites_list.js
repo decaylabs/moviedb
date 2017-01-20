@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFavorites, getFavorite } from '../actions/index';
 import { bindActionCreators } from 'redux';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 class FavoritesList extends Component {
 
@@ -24,10 +25,12 @@ class FavoritesList extends Component {
 
   render() {
     return (
-      <ul className="list-group col-md-2">
-        Favorites
-        {this.renderList()}
-      </ul>
+        <Scrollbars className="favorites" style={{ width: 310, height: 480 }}>
+        <h5 className="col-heading">Favorites</h5>
+          <ul className="list-group-favorites">
+            {this.renderList()}
+          </ul>
+        </Scrollbars>
     );
   }
 }
