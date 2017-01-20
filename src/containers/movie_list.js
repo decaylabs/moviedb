@@ -34,9 +34,9 @@ renderList() {
 
   render() {
     return (
-      <div>
+      <div className="col-md-2 search-list">
         <h5 className="col-heading">Results</h5>
-        <Scrollbars style={{ width: 310, height: 490 }}>
+        <Scrollbars style={{height: 480}}>
           <ul className="list-group-search">
             {this.renderList()}
           </ul>

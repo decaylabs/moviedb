@@ -6,7 +6,7 @@ var db = new loki('movieDB',
       autoload: true,
       autoloadCallback : loadHandler,
       autosave: true,
-      autosaveInterval: 10000, // 10 seconds
+      autosaveInterval: 5000, // 10 seconds
       adapter: idbAdapter
     });
 

@@ -22,13 +22,16 @@ h1 {
   border: 5px solid #ddd;
 }
 
-.col-md-2 {
-  padding: 0 15px 0 0;
+.search-list {
+  padding-right: 0px;
+}
+
+.favorites-list {
+  padding: 0 20px 0 0;
 }
 
 .list-group-search {
-  padding-left: 15px;
-  padding-right: 0px;
+  padding-left: 5px;
 }
 
 .list-group-favorites {

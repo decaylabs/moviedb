@@ -24,7 +24,7 @@ class FavoritesList extends Component {
 
   render() {
     return (
-      <div className="col-md-2">
+      <div className="col-md-2 favorites-list">
         <h5 className="col-heading">Favorites</h5>
           <ul className="list-group-favorites">
             {this.renderList()}
