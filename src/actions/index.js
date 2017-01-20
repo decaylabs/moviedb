@@ -7,8 +7,6 @@ const ROOT_URL = 'http://www.omdbapi.com/';
 const SEARCH_TOKEN = '?s=';
 const ID_TOKEN = '?i=';
 const TYPE_URL = '&y=&plot=short&r=json';
-// const YT_API_KEY = 'key=AIzaSyDU0Rl4vJkkudr57KgNLD_IOXR4tKesNp4';
-// const YT_URL= 'https://www.googleapis.com/youtube/v3/search?part=snippet&';
 
 export function searchMovies(term) {
   const request = axios.get(`${ROOT_URL}${SEARCH_TOKEN}${term}${TYPE_URL}`);

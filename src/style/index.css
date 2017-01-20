@@ -13,6 +13,10 @@ h1 {
   width: 50%;
 }
 
+.splash {
+  text-align: center
+}
+
 .movie-list img {
   max-width: 60px;
 }
