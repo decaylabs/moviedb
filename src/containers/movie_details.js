@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addFavorite, removeFavorite, checkFavorite} from '../actions/index';
 
-class Details extends Component {
+class MovieDetails extends Component {
   componentWillMount(){
     this.props.checkFavorite(this.props.movie)
   }
@@ -15,21 +15,21 @@ class Details extends Component {
     this.props.addFavorite(this.props.movie);
   }
 
-  onDeleteClick() {
+  onRemoveClick() {
     this.props.removeFavorite(this.props.movie);
   }
 
   render() {
-    const favorite = this.props.favorite
+    const movie = this.props.movie;
     let button = null;
 
-    if (!favorite) {
+    if (!this.props.favorite) {
       button = <AddFavorite onClick={this.onFavoritesClick.bind(this)} />
     }
     else {
-      button = <DeleteFavorite onClick={this.onDeleteClick.bind(this)} />
+      button = <RemoveFavorite onClick={this.onRemoveClick.bind(this)} />
     }
-    const movie = this.props.movie;
+
     return (
       <div className="movie-detail media col-md-7">
         <div className="media-left">
@@ -51,9 +51,9 @@ class Details extends Component {
           <h6>Metascore: {movie.Metascore}</h6>
           <h6>imdb Rating: {movie.imdbRating}</h6>
           {button}
-          </div>
         </div>
-      );
+      </div>
+    );
   }
 }
 
@@ -66,7 +66,7 @@ function AddFavorite(props) {
     </button>
   );
 }
-function DeleteFavorite(props) {
+function RemoveFavorite(props) {
   return (
     <button
      onClick={props.onClick}
@@ -87,4 +87,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({checkFavorite, addFavorite, removeFavorite}, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);

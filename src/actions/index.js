@@ -1,6 +1,7 @@
 import axios from 'axios';
 import loki from '../lokiDB/index';
-import { SEARCH_MOVIES, GET_MOVIE, GET_FAVORITES, GET_FAVORITE, CHECK_FAVORITE, ADD_FAVORITE, REMOVE_FAVORITE} from '../constants/ActionTypes';
+import { GET_MOVIES, GET_MOVIE, GET_FAVORITES, GET_FAVORITE,
+         CHECK_FAVORITE, ADD_FAVORITE, REMOVE_FAVORITE} from '../constants/ActionTypes';
 
 const ROOT_URL = 'http://www.omdbapi.com/';
 const SEARCH_TOKEN = '?s=';
@@ -13,33 +14,33 @@ export function searchMovies(term) {
   const request = axios.get(`${ROOT_URL}${SEARCH_TOKEN}${term}${TYPE_URL}`);
 
   return {
-    type: SEARCH_MOVIES,
+    type: GET_MOVIES,
     payload: request
   }
 }
 
-export function getMovie(id) {
-  const request = axios.get(`${ROOT_URL}${ID_TOKEN}${id}${TYPE_URL}`);
+export function getMovie(movie) {
+  let request = loki.getCollection('favorites').findOne(movie);
 
-  return {
-    type: GET_MOVIE,
-    payload: request
+  if (!request) {
+    console.log('API REQUEST');
+    request = axios.get(`${ROOT_URL}${ID_TOKEN}${movie.imdbID}${TYPE_URL}`);
+
+    return {
+      type: GET_MOVIE,
+      payload: request
+    }
   }
-}
-
-export function addFavorite(movie) {
-
-  loki.getCollection('favorites').insert(movie);
 
   return {
-    type: ADD_FAVORITE,
-    payload: movie
+    type: GET_FAVORITE,
+    payload: request
   }
 }
 
 export function getFavorites() {
-  const request = new Promise( function(resolve){
-    setTimeout(() => resolve(loki.getCollection('favorites').data), 500);
+  const request = new Promise( resolve => {
+    setTimeout(() => resolve(loki.getCollection('favorites').data), 100);
   });
 
   return {
@@ -48,7 +49,6 @@ export function getFavorites() {
   }
 }
 
-
 export function getFavorite(movie) {
   return {
     type: GET_FAVORITE,
@@ -56,9 +56,29 @@ export function getFavorite(movie) {
   }
 }
 
-export function removeFavorite(movie) {
+export function getInit() {
+  const request = new Promise( resolve => {
+    setTimeout(() => resolve(loki.getCollection('favorites').data[0]), 100);
+  });
 
+  return {
+    type: GET_FAVORITE,
+    payload: request
+  }
+}
+
+export function addFavorite(movie) {
+  loki.getCollection('favorites').insert(movie);
+
+  return {
+    type: ADD_FAVORITE,
+    payload: movie
+  }
+}
+
+export function removeFavorite(movie) {
   const request = loki.getCollection('favorites').findAndRemove(movie);
+
   return {
     type: REMOVE_FAVORITE,
     payload: request
@@ -66,12 +86,8 @@ export function removeFavorite(movie) {
 }
 
 export function checkFavorite(movie) {
-
   const request = loki.getCollection('favorites').findOne(movie)
-  // const request = new Promise( function(resolve){
-  //   setTimeout(() => resolve(loki.getCollection('favorites').findOne(movie)), 500);
-  // });
-  console.log(request);
+
   return {
     type: CHECK_FAVORITE,
     payload: request

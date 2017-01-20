@@ -4,9 +4,10 @@ import { getMovie, checkFavorite } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class MovieList extends Component{
-  componentDidUpdate() {
-    const id = this.props.movies[0].imdbID;
-    this.props.getMovie(id);
+
+  componentWillUpdate(){
+    console.log('test');
+    this.props.getMovie(this.props.movies[0]);
   }
 
   renderList() {
@@ -15,7 +16,7 @@ class MovieList extends Component{
       return (
         <li
           key={movie.imdbID}
-          onClick={() => this.props.getMovie(movie.imdbID)}
+          onClick={() => this.props.getMovie(movie)}
           className="list-group-item">
       <div className="movie-list media">
         <div className="media-left">

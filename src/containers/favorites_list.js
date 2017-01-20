@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getFavorites, getFavorite } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
-class CollectionList extends Component {
+class FavoritesList extends Component {
 
   componentWillMount() {
     this.props.getFavorites();
@@ -32,12 +32,12 @@ class CollectionList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { favorites: state.favorites };
+function mapStateToProps({favorites}) {
+  return { favorites };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getFavorites, getFavorite }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionList);
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritesList);

@@ -1,5 +1,4 @@
 import loki from 'lokijs';
-var favorites = [];
 
 var idbAdapter = new loki.LokiLocalStorageAdapter();
 var db = new loki('movieDB',
@@ -13,7 +12,7 @@ var db = new loki('movieDB',
 
 function loadHandler() {
     // if database did not exist it will be empty so I will intitialize here
-  favorites = db.getCollection('favorites');
+  var favorites = db.getCollection('favorites');
   if (favorites === null) {
     favorites = db.addCollection('favorites');
   }

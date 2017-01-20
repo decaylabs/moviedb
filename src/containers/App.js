@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import MovieList from '../containers/movie_list';
-import MovieDetail from '../containers/movie_detail';
+import MovieViewer from '../containers/movie_viewer';
 import SearchBar from '../containers/search_bar';
-import CollectionList from '../components/collections_list';
+import FavoritesList from '../containers/favorites_list';
 
 
 export default class App extends Component {
@@ -10,8 +10,8 @@ export default class App extends Component {
     return (
       <div>
         <SearchBar />
-        <CollectionList />
-        <MovieDetail />
+        <FavoritesList />
+        <MovieViewer />
         <MovieList />
       </div>
     );
