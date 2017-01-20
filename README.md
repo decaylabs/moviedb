@@ -21,7 +21,7 @@ configure the necessary boilerplate.
 5. Run the start script from project directory. This will transpile and bundle the assets using webpack
    and Babel-loader and then serve the app locally.
 
-    `$ nmp start'
+    `$ nmp start`
 
 6. Open a browser and visit localhost:3000
 
@@ -29,24 +29,24 @@ configure the necessary boilerplate.
 
 ###React
 
-The app is madde up mostly of containers that communicate with my redux state. Some on my containers could be broken down and split out into functional components with the props being passed from a parent container. This is something that I might implement when doing a refactor and cleaning up the design implementation a bit.
+The app is made up mostly of containers that communicate with my redux state. Some on my containers could be broken down and made into functional components with the props being passed from a parent container. This is something that I might implement when doing a refactor and cleaning up my design implementation a bit.
 
 * components/
   1. **header.js** - Just a simple functional component that displays the title at the top.
 
 * containers/
-  1. **App.js** - Parent container that renders each corresponding component.
+  1. **App.js** - Parent container that renders each corresponding component / container.
 
-  2. **search_bar.js** - Render a form that submits the search term to the api call. The results update the redux-state movies.search property containing an array of ~10 objects.
+  2. **search_bar.js** - Renders a form that submits the search term for an api call. The results update the redux-state movies.search property containing an array of ~10 objects.
 
-  3. **movie_list.js** - Renders the list of search results. On update, it updates the movies.movie state to the first item so that the movie_viewer displays the top result. Incorporates a responsive Scrollbars area for a clean organization of results.
+  3. **movie_list.js** - Renders the list of search results. On component update, it updates the movies.movie state to the first item so that the movie_viewer displays the top result. Incorporates a responsive Scrollbars area for a clean organization of results.
 
-  4. **favorites_list.js** - Before mounting, grabs all the saved favorites from the lokijs database. It    then maps over the array of results and renders the list. On click, it will update the favorite property in the redux-state favorites.favorite property.
+  4. **favorites_list.js** - Before mounting, grabs all the saved favorites from the lokijs database. It then maps over the array of results and renders the list. On click, it will update the  property in the redux-state favorites.favorite.
 
   5. **movie_viewer.js** - Parent container for displaying the detailed information about a particular movie.
   On mount, checks the lokijs database for the first document. If nothing is in the DB, renders a simple div.
 
-  6. **movie_details.js** - Renders the movie details based what is in the current movies.movie state property. On mount and update, it checks to see if the current movie is already in the database. This allows the component to conditionally render the button for adding / removing items from the favorites collection in the db.
+  6. **movie_details.js** - Renders the movie details based on what is in the movies.movie redux-state property. On mount and update, it checks to see if the current movie is already in the database. This allows the component to conditionally render the button for adding / removing items from the favorites collection in the db.
 
 
 ###Redux
@@ -63,7 +63,7 @@ Redux is used to track app level state.
 
         3. **getMovie** - Called by an onClick event from movie_list. First checks to see if the item already exists in the lokijs db or proceeds to do an additional api call to get the detailed json from omdbapi.
 
-        4. **getFavorites** - Called on mount of favorites-list. The request is a promise with a small setTimeout before resolving. This is done because the async nature of the application. Loki will resolve immediatly even when the database or collection doesn't exsist.
+        4. **getFavorites** - Called on mount of favorites-list. The request is a promise with a small setTimeout before resolving. This is done because the async nature of the application. Loki will resolve immediately even when the database or collection doesn't exsist.
 
         5. **getFavorite** - Is used by an onClick event from favorites-list. This action is already passed the movie from the favorites-list so it doesn't need to query the database.
 
@@ -91,7 +91,7 @@ Lokijs is a in-memory JavaScript Datastore with persistence. It is highly perfor
 
 ###Api
 
-Data for this is app is provided by the Open Movie Database API. Requests don't require a key and do contain a large set of movies and tv shows. Unfortunatley, the endpoint can be rather slow causing the app to occasionally "lag" especially on more obscure searches. Unfortunatley, there isn't a fast, widely avilable and free endpoint for this time of information.
+Data for this is app is provided by the Open Movie Database API. Requests don't require a key and do contain a large set of movies and tv shows. Unfortunately, the endpoint can be rather slow causing the app to occasionally "lag" especially on more obscure searches. Sadly, there isn't a fast, widely avilable and free endpoint for this time of information.
 
 ###Improvements
 
@@ -105,4 +105,4 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 
 * Integrate a modal that calls the youtube api and returns a trailer via iframe when clicking on the poster in the movie-details component.
 
-* Redux action improvements via redux-thunk and a slightly cleaner approach to state changes.
+* Redux action improvements via redux-thunk and a cleaner approach to state changes.
