@@ -39,7 +39,7 @@ The app is made up mostly of containers that communicate with the redux state st
 
   2. **search_bar.js** - Renders a form that supplies the search term to an api call. The result from the api call update the redux-state movies.search property containing an array of ~10 objects.
 
-  3. **movie_list.js** - Renders the list of search results. On update, the component refreshes the movies.movie state, setting the first item so that the movie_viewer displays the top result. Incorporates a responsive Scrollbars area for a clean organization of results.
+  3. **movie_list.js** - Renders the list of search results. On update, the component refreshes the movies.movie state, setting the first item so that the movie_viewer displays the top result. The corresponding action also caches the api calls for all the items in the list to make user interaction smoother. Incorporates a responsive Scrollbars area for a clean organization of results.
 
   4. **favorites_list.js** - Before mounting, all the saved favorites are loaded from the lokijs database. The resulting array is then mapped over and rendered to favorites list. On click, it will update the  property in the redux-state favorites.favorite.
 
@@ -61,7 +61,7 @@ Redux is used to track app level state.
 
         2. **searchMovies** - Uses the search_bar term to call the omdbapi via axios. The request is a promise that resolves to an array containing ~10 simple movie objects.
 
-        3. **getMovie** - Called by an onClick event from movie_list. First checks to see if the item already exists in the lokijs db or proceeds to do an additional api call to get the detailed json from omdbapi.
+        3. **getMovie** - Called by an onClick event from movie_list. Api call to get the detailed json from omdbapi. These results are already cached to disk on search, so the user doesn't have to wait for the omdbapi on click. This could be handled better in a future revision.
 
         4. **getFavorites** - Called when favorites-list is mounted. The request is a promise with a small setTimeout before resolving. This is done because the async nature of the application. Loki will resolve immediately even when the database or collection doesn't exsist.
 
@@ -73,13 +73,15 @@ Redux is used to track app level state.
 
         8. **removeFavorite** - Finds and removes the corresponding movie from the favorites collection.
 
-        9. **checkFavorite** - Used by movie-details for conditional render of the add / remove button in the container.   
+        9. **checkFavorite** - Used by movie-details for conditional render of the add / remove button in the container.
+
+        10. **diskCacheResults** - Called on search-list update so that interaction appears more responsive and a user doesn't have to wait for the api result to return when they click. Caches the detailed jsons to disk and passes the first detailed movie for state update.   
 
 * reducers/
   1. **index.js** - Simple combineReducer
   2. **favorites.js** - Add, remove, check and get-all actions coming from the db.
   3. **movies.js** - Search and get movies from the api.
-  
+
 ###Lokijs
 
 Lokijs is a in-memory JavaScript Datastore with persistence. It is highly performant and uses mongo style querying for a familar endpoint. It is used in this application for persisting favorites across sessions. It was a unique challenge and something worth experimenting with in future applications.
@@ -95,7 +97,7 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 
 ###Improvements
 
-* Better handling of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result (specific movie).
+* Better handling of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result.
 
 * Re-design structure including breaking some of the containers into subsets of functional components that serve a more Parent container.
 
