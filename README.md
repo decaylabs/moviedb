@@ -106,3 +106,5 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 * Integrate a modal that calls the youtube api and returns a trailer via iframe when clicking on the poster in the movie-details component.
 
 * Redux action improvements via redux-thunk and a cleaner approach to state changes.
+
+* Replace boostrap via public index.html with react-bootstrap for build-level integration.
