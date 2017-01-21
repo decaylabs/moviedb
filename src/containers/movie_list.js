@@ -36,7 +36,7 @@ class MovieList extends Component {
     return (
       <div className="col-md-2 search-list">
         <h5 className="col-heading">Results</h5>
-        <Scrollbars style={{height: 480}}>
+        <Scrollbars style={{height: 490}}>
           <ul className="list-group-search">
             {this.renderList()}
           </ul>

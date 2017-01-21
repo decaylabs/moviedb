@@ -12,7 +12,7 @@ class MovieViewer extends Component {
 
   render () {
     if(!this.props.movie) {
-      return <div className="col-md-8 splash">Search and Add some movies to the database!</div>;
+      return <div className="col-xs-8 splash">Search and Add some movies to the database!</div>;
     }
     return (
           <MovieDetails />

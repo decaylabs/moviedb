@@ -27,7 +27,10 @@ class FavoritesList extends Component {
     return (
       <div className="col-md-2 favorites-list">
         <h5 className="col-heading">Favorites</h5>
-        <Scrollbars style={{height: 480}}>
+        <Scrollbars
+          autoHeight
+          autoHeightMin={0}
+          autoHeightMax={480}>
           <ul className="list-group-favorites">
             {this.renderList()}
           </ul>
