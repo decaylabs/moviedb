@@ -97,7 +97,7 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 
 ###Improvements
 
-* Better handling / replacement of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result.
+* Better handling / replacement of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result. Right now, I utilize disk cache to have the results ready on click which can result in api calls on items that the user never intends to click on.
 
 * Re-design structure including breaking some of the containers into subsets of functional components that serve a more Parent container.
 
@@ -110,3 +110,7 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 * Redux action improvements via redux-thunk and a cleaner approach to state changes.
 
 * Replace boostrap via public index.html with react-bootstrap for build-level integration.
+
+* Expand search parameters ex. List of episodes.
+
+* Testing framework ex. Jasmine, Karma

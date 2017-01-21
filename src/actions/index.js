@@ -9,7 +9,7 @@ const ID_TOKEN = '?i=';
 const TYPE_URL = '&y=&plot=short&r=json';
 
 export function searchMovies(term) {
-  const request = axios.get(`${ROOT_URL}${SEARCH_TOKEN}${term}${TYPE_URL}`);
+  const request = axios.get(`${ROOT_URL}${SEARCH_TOKEN}${term}`);
 
   return {
     type: GET_MOVIES,
