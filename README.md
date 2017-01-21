@@ -91,11 +91,11 @@ Lokijs is a in-memory JavaScript Datastore with persistence. It is highly perfor
 
 ###Api
 
-Data for this is app is provided by the Open Movie Database API. Requests don't require a key and do contain a large set of movies and tv shows. Unfortunately, the endpoint can be rather slow causing the app to occasionally "lag" on more obscure searches. Sadly, there isn't a fast, widely avilable, and free endpoint for movie information out there currently.
+Data for this is app is provided by the Open Movie Database API. Requests don't require a key and do contain a large set of movies and tv shows. Unfortunately, the endpoint can be rather slow causing the app to occasionally "lag" on more obscure searches.
 
 ###Improvements
 
-* Better handling of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result (specific movie).
+* Better handling / replacement of the omdbapi endpoint. On slow responses, the application should let the user know what is happening. Right now, is works smoothly on common requests ex. "star wars" but less so on requests that take considerably longer to return the result (specific movie).
 
 * Re-design structure including breaking some of the containers into subsets of functional components that serve a more Parent container.
 
