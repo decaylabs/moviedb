@@ -18,20 +18,10 @@ export function searchMovies(term) {
 }
 
 export function getMovie(movie) {
-  let request = loki.getCollection('favorites').findOne(movie);
-
-  if (!request) {
-    console.log('API REQUEST');
-    request = axios.get(`${ROOT_URL}${ID_TOKEN}${movie.imdbID}${TYPE_URL}`);
-
-    return {
-      type: GET_MOVIE,
-      payload: request
-    }
-  }
+  const request = axios.get(`${ROOT_URL}${ID_TOKEN}${movie.imdbID}${TYPE_URL}`);
 
   return {
-    type: GET_FAVORITE,
+    type: GET_MOVIE,
     payload: request
   }
 }
@@ -89,5 +79,16 @@ export function checkFavorite(movie) {
   return {
     type: CHECK_FAVORITE,
     payload: request
+  }
+}
+
+export function diskCacheResults(movies) {
+  const request = movies.map((movie) => {
+    return axios.get(`${ROOT_URL}${ID_TOKEN}${movie.imdbID}${TYPE_URL}`)
+  });
+
+  return {
+    type: GET_MOVIE,
+    payload: request[0]
   }
 }
