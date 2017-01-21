@@ -3,7 +3,7 @@ import loki from '../lokiDB/index';
 import { GET_MOVIES, GET_MOVIE, GET_FAVORITES, GET_FAVORITE,
          CHECK_FAVORITE, ADD_FAVORITE, REMOVE_FAVORITE} from '../constants/ActionTypes';
 
-const ROOT_URL = 'http://www.omdbapi.com/';
+const ROOT_URL = 'https://www.omdbapi.com/';
 const SEARCH_TOKEN = '?s=';
 const ID_TOKEN = '?i=';
 const TYPE_URL = '&y=&plot=short&r=json';
