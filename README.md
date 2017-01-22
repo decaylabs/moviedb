@@ -114,3 +114,5 @@ Data for this is app is provided by the Open Movie Database API. Requests don't 
 * Expand search parameters ex. List of episodes.
 
 * Testing framework ex. Jasmine, Karma
+
+* Better search term handling
